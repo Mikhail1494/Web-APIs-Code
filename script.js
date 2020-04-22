@@ -13,6 +13,8 @@ var nextBtn = document.getElementById("next");
 var startBtn = document.getElementById("go");
 var subBtn = document.getElementById("submit");
 var result = document.getElementById("result");
+var localStorage = window.localStorage;
+
 
 const CORRECT_COUNT = 1;
 const MAX_QUESTIONS = 3;
@@ -23,7 +25,7 @@ function takeQuestion(questionIndex) {
   var q = questions[questionIndex];
   if (q) {
   }
-  questionEl.textContent = questionIndex + 1 + ". " + q.question;
+  questionEl.textContent = (questionIndex + 1) + ". " + q.question;
   selection1.textContent = q.selection1;
   selection2.textContent = q.selection2;
   selection3.textContent = q.selection3;
@@ -56,13 +58,8 @@ function takeNextQuestion() {
   } else {
     alert("Wrong answer!");
   }
-  // if(questions[currentQuestion].answer === answer){
-  //     score++;
-  //     userChoice.checked = false;
-  // }
-  //userChoice.checked = false;
-  //currentQuestion++;
-  //console.log(currentQuestion)
+  
+
 
   console.log("currentQuestionNumberAfterAnswer", currentQuestion);
   currentQuestion++;
@@ -74,8 +71,18 @@ function clock() {
   myTimer = setInterval(myCloack, 1000);
   function myCloack() {
     document.getElementById("ticker").innerHTML = ticeker--;
-    if (ticeker == 0) {
+    if (ticeker == 0 || currentQuestion===2) {
       clearInterval(myTimer);
+
+
+
+
+
+
+
+
+
+
     }
   }
 }
